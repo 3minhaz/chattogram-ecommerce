@@ -20,6 +20,9 @@ search field starts here
   padding: 10px 50px;
   border-radius: 25px;
 }
+.main{
+  background-color: #F3F1FF;
+}
 /*
  search field ends
  */
@@ -40,8 +43,10 @@ search field starts here
   justify-content: center;
 }
 .single-product {
+  margin:10px;
   padding: 10px;
   transition: 0.6s;
+  background-color: white;
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;

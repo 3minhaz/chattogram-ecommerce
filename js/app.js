@@ -11,13 +11,14 @@ const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
     const image = product.image;
+    const title = product.title;
     const div = document.createElement("div");
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
       <div>
     <img class="product-image" src=${image}></img>
       </div>
-      <h3>${product.title}</h3>
+      <h3>${title.slice(0, 35)}</h3>
       <h4>Average rating: <span class="text-primary">${product.rating.rate}</span></h4>
       <h4>Total rating: ${product.rating.count}</h4>
       <h6>Category: ${product.category}</h6>
