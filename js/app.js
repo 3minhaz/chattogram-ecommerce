@@ -19,15 +19,33 @@ const showProducts = (products) => {
     <img class="product-image" src=${image}></img>
       </div>
       <h3>${product.title}</h3>
-      <p>Category: ${product.category}</p>
-      <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <h4>Average rating: <span class="text-primary">${product.rating.rate}</span></h4>
+      <h4>Total rating: ${product.rating.count}</h4>
+      <h6>Category: ${product.category}</h6>
+      <h2>Price: <span class="price-color">$${product.price}</span></h2>
+      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="add-to-cart ">Add to Cart</button>
+      <button id="details-btn" onclick="details(${product.id})" >Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
-
 };
+
+//details products
+const details = (id) => {
+  fetch(`https://fakestoreapi.com/products/${id}`)
+    .then(res => res.json())
+    .then(json => displayDetail(json))
+}
+//display detail 
+const displayDetail = data => {
+  document.getElementById('details').innerHTML = `
+  <h1>Shirt Name: ${data.title}</h1>
+  <p>Description: ${data.description}</p>
+  `;
+  console.log(data.description)
+}
+
+//add to cart 
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
@@ -36,7 +54,7 @@ const addToCart = (id, price) => {
   updateTotal();
   document.getElementById("total-Products").innerText = count;
 };
-
+//get input value for products
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
@@ -48,7 +66,7 @@ const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
-  document.getElementById(id).innerText = total;
+  document.getElementById(id).innerText = total.toFixed(2);
 };
 
 // set innerText function
@@ -77,5 +95,5 @@ const updateTaxAndCharge = () => {
 const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
 };

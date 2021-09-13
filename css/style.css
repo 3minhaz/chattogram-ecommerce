@@ -2,19 +2,15 @@ body {
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
+/*
+search field starts here 
+ */
 .search-field {
-  border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   padding: 5px;
-  outline: none;
-}
-.search-field:hover {
-  outline: none;
-  border: none;
 }
 .search-box {
-  border: 1px solid rgb(3, 118, 211);
-  width: 281px;
+  width: 301px;
   border-radius: 5px;
   margin: auto;
   margin-top: 50px;
@@ -23,15 +19,23 @@ body {
 .search-button {
   padding: 10px 50px;
   border-radius: 25px;
-  margin-left: 20px;
+}
+/*
+ search field ends
+ */
+
+ /* 
+ cart section starts here
+ */
+#details{
+  margin:0 30px;
+  margin-bottom: 35px;
 }
 #all-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* border: 1px solid black; */
-  text-align: center;
   width: 100%;
-  margin: auto;
+  margin: 25px;
   align-items: center;
   justify-content: center;
 }
@@ -42,15 +46,34 @@ body {
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
   border-radius: 10px;
-  border: 1px solid cyan;
+  border: 1px solid rgb(255, 102, 0);
 }
 .product-image {
   width: 150px;
   height: 150px;
 }
+.price-color{
+  color: #f57224;
+}
+.add-to-cart{
+  background-image: linear-gradient(239deg,#ffac2d 7%,#ff8219);
+  border:none;
+  color:white;
+  font-size:18px;
+  padding:5px 10px;
+  border-radius: 5px;
+}
+#details-btn{
+  background-image: linear-gradient(213deg,#ff7b48 7%,#f73c22 92%);
+  border:none;
+  color:white;
+  font-size:18px;
+  padding:5px 10px;
+  border-radius: 5px;
+}
 .cart {
   width: 350px;
-  /* border: 1px solid green; */
+  border: 1px solid green;
   padding: 10px;
   box-shadow: 10px 10px 20px gray;
   border-radius: 5px;
@@ -60,6 +83,13 @@ body {
 .cart-main {
   padding-right: 30px;
 }
+/* 
+cart section ends
+*/
+
+/* 
+css media query
+*/
 @media only screen and (max-width: 768px) {
   #all-products {
     display: grid;
@@ -67,7 +97,6 @@ body {
   }
   .cart {
     width: 300px;
-    /* border: 1px solid green; */
     padding: 10px;
     box-shadow: 10px 10px 20px gray;
     border-radius: 5px;
